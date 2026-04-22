@@ -1,21 +1,6 @@
 Binance Futures Testnet Trading BotA clean, production-structured Python CLI for placing orders on the Binance USDT-M Futures Testnet.
 Supports Market, Limit, and Stop-Market orders with full input validation, structured logging, and graceful error handling.
 
-trading_bot/
-├── bot/
-│   ├── __init__.py          # Package exports
-│   ├── client.py            # Binance REST API client (signing, requests, error handling)
-│   ├── orders.py            # Order placement logic + response formatting
-│   ├── validators.py        # CLI input validation (all raises ValueError)
-│   └── logging_config.py   # Rotating file + console logger setup
-├── cli.py                   # Argparse CLI entry point
-├── logs/
-│   └── trading_bot.log      # Auto-created; sample log included
-├── .env.example             # Credential template
-├── .gitignore
-├── requirements.txt
-└── README.md
-
 Setup
 1. Prerequisites
 
@@ -110,6 +95,21 @@ One-way position mode — Orders use positionSide=BOTH (default). If your accoun
 No leverage / margin management — Leverage is whatever the testnet account defaults to. Adjust via the Binance UI or extend client.py with /fapi/v1/leverage.
 Quantity precision — The bot does not auto-round quantities to the symbol's stepSize. If you hit -1111 (Precision is over the maximum defined for this asset), reduce decimal places on your quantity.
 Time-in-force — Limit orders default to GTC (Good Till Cancelled).
+PROJECT STRUCTURE 
+trading_bot/
+├── bot/
+│   ├── __init__.py          # Package exports
+│   ├── client.py            # Binance REST API client (signing, requests, error handling)
+│   ├── orders.py            # Order placement logic + response formatting
+│   ├── validators.py        # CLI input validation (all raises ValueError)
+│   └── logging_config.py   # Rotating file + console logger setup
+├── cli.py                   # Argparse CLI entry point
+├── logs/
+│   └── trading_bot.log      # Auto-created; sample log included
+├── .env.example             # Credential template
+├── .gitignore
+├── requirements.txt
+└── README.md
 
 
 Requirements
